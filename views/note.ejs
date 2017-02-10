@@ -1,0 +1,17 @@
+<% include ./partials/head %>
+<% include ./partials/nav %>
+<h1><%= note.title %></h1>
+<p><%= note.content %></p>
+<% var url = '/notes/' + note.id %>
+<form action=<%= url + '?_method=DELETE' %> method="POST">
+  <button class="btn">Delete</button>
+</form>
+
+<button class="btn" id="edit_button">Edit</button>
+<form id='edit' class="hide" action=<%= url + '?_method=PUT' %> method="POST">
+  <input id="title" name="title" value=<%= note.title %> />
+  <input id="content" name="content" value=<%= note.content %> />
+  <button id="cancel" class="btn" type="button">Cancel</button>
+  <button class="btn" type="submit">Save</button>
+</form>
+<script src="../javascript/main.js"></script>
